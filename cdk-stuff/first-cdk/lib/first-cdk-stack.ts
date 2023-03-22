@@ -11,7 +11,7 @@ export class FirstCdkStack extends cdk.Stack {
     new s3.Bucket(this, 'someBucket', {
       lifecycleRules: [
         {
-          expiration: Duration.days(5)
+          expiration: Duration.days(2)
         }
       ]
     });

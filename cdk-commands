@@ -1,2 +1,8 @@
 cdk commands:
 cdk init app --language typescript
+cdk bootstrap
+cdk synth
+cdk deploy
+cdk deploy --all
+cdk deploy FirstCdkStack
+cdk list
