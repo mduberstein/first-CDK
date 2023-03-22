@@ -19,4 +19,4 @@ new FirstCdkStack(app, 'FirstCdkStack', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
-new FirstCdkStack(app, 'FirstCdkStack2', {});
+// new FirstCdkStack(app, 'FirstCdkStack2', {});

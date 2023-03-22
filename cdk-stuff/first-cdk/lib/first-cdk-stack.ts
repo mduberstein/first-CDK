@@ -1,5 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
-import { aws_s3 as s3, Duration } from 'aws-cdk-lib';
+import { aws_s3 as s3, CfnOutput, Duration } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
@@ -8,7 +8,7 @@ export class FirstCdkStack extends cdk.Stack {
     super(scope, id, props);
 
     // The code that defines your stack goes here
-    new s3.Bucket(this, 'someBucket', {
+    const myBucket = new s3.Bucket(this, 'someBucket', {
       lifecycleRules: [
         {
           expiration: Duration.days(2)
@@ -16,6 +16,9 @@ export class FirstCdkStack extends cdk.Stack {
       ]
     });
 
+    new CfnOutput(this, 'mybucket', {
+      value: myBucket.bucketName
+    })
     // example resource
     // const queue = new sqs.Queue(this, 'FirstCdkQueue', {
     //   visibilityTimeout: cdk.Duration.seconds(300)
