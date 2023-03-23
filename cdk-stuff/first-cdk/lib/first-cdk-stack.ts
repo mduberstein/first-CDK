@@ -33,15 +33,26 @@ export class FirstCdkStack extends cdk.Stack {
       }
     });
 
-    new Bucket(this, 'MyL2Bucket', {
+    const duration = new CfnParameter(this, 'duration', {
+      default: 6, 
+      minValue: 1,
+      maxValue: 10,
+      type: 'Number'
+    })
+
+    const myL2Bucket = new Bucket(this, 'MyL2Bucket', {
       lifecycleRules: [
         {
-          expiration: Duration.days(2)
+          expiration: Duration.days(duration.valueAsNumber)
         }
       ]
     });
 
     new L3Bucket(this, 'MyL3Bucket', 3);
+
+    new CfnOutput(this, 'MyL2BucketName', {
+      value: myL2Bucket.bucketName
+    });
 
     // before 2023-03-23_BEGIN
     // const myBucket = new s3.Bucket(this, 'someBucket', {
