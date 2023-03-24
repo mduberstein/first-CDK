@@ -22,5 +22,7 @@ const app = new cdk.App();
 //   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 // });
 // new FirstCdkStack(app, 'FirstCdkStack2', {});
-new PhotoStack(app, 'PhotoStack');
-new PhotoHandlerStack(app, 'PhotoHandlerStack');
+const photoStack = new PhotoStack(app, 'PhotoStack');
+new PhotoHandlerStack(app, 'PhotoHandlerStack', {
+    targetBucketArn: photoStack.photosBucketArn
+});
