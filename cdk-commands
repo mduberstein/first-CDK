@@ -1,4 +1,6 @@
-cdk commands:
+// list aws profiles:
+aws configure list-profiles
+// cdk commands:
 cdk init app --language typescript
 cdk bootstrap
 cdk synth
